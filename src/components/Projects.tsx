@@ -7,95 +7,97 @@ export default function Projects() {
   const [filterType, setFilterType] = useState<"self" | "team">("self");
 
   const renderProjectCard = (project: ProjectItem, index: number) => {
+    const isSelf = project.id.startsWith("self");
     return (
       <motion.div
         key={project.id}
         layout
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.6, delay: (index % 3) * 0.12, ease: [0.16, 1, 0.3, 1] }}
-        whileHover={{ y: -6, scale: 1.015, borderColor: "rgba(56, 189, 248, 0.4)" }}
-        className="interactive-card glass-card hover-glow-cyan flex flex-col justify-between rounded-3xl overflow-hidden border border-white/5 bg-slate-900/40 group relative transition-all duration-300 h-full shadow-[0_20px_45px_rgba(2,6,23,0.35)] text-left"
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: "easeOut" }}
+        className="group flex flex-col justify-between rounded-[22px] overflow-hidden border border-[rgba(0,255,255,0.18)] bg-[#0B0F14]/90 transition-all duration-250 hover:border-[rgba(0,255,255,0.55)] hover:shadow-[0_0_25px_rgba(0,255,255,0.08)] h-full shadow-lg text-left min-w-0 w-full"
       >
-        {/* Dynamic glow corner */}
-        <div className="absolute -top-12 -right-12 w-28 h-28 bg-[#38bdf8]/15 blur-xl pointer-events-none group-hover:scale-150 transition-transform" />
-
-        {/* Card Image Area */}
-        <div className="h-48 w-full overflow-hidden relative select-none cursor-pointer" onClick={() => window.dispatchEvent(new CustomEvent("openProjectModal", { detail: project }))}>
+        {/* Card Image Area (16:9 Aspect Ratio) */}
+        <div
+          className="w-full aspect-[16/9] overflow-hidden relative select-none cursor-pointer group/img"
+          onClick={() => window.dispatchEvent(new CustomEvent("openProjectModal", { detail: project }))}
+        >
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 brightness-90 group-hover:brightness-100"
+            className="w-full h-full object-cover group-hover/img:scale-[1.02] transition-transform duration-300 ease-out"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
-          
-          {/* Top category indicator */}
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest uppercase text-slate-300">
-            {project.id.startsWith("self") ? "Self Authored" : "Team Collab"}
-          </div>
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0B0F14] via-[rgba(11,15,20,0.5)] to-transparent pointer-events-none" />
         </div>
 
         {/* Card Content Area */}
-        <div className="p-6 grow flex flex-col justify-between">
-          <div>
+        <div className="p-5 sm:p-6 grow flex flex-col justify-between space-y-4">
+          <div className="space-y-2">
+            {/* Metadata / Category Role label */}
+            <div className="text-[12px] font-mono tracking-[0.16em] uppercase text-[#00FFFF] font-semibold">
+              {isSelf ? "Self Authored Project" : "Collaborative Team Project"}
+            </div>
+
+            {/* Title */}
             <h4
               onClick={() => window.dispatchEvent(new CustomEvent("openProjectModal", { detail: project }))}
-              className="font-display font-bold text-lg text-slate-100 group-hover:text-[#38bdf8] transition-colors line-clamp-1 cursor-pointer"
+              className="font-display font-extrabold text-lg sm:text-xl text-[#FFFFFF] group-hover:text-[#FFFFFF] transition-colors line-clamp-1 cursor-pointer"
             >
               {project.title}
             </h4>
             
-            <p className="text-xs sm:text-sm text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+            {/* Description */}
+            <p className="text-sm text-[#FFFFFF] opacity-90 leading-[1.7] line-clamp-3">
               {project.description}
             </p>
           </div>
 
-          <div className="mt-5">
+          <div className="space-y-4 pt-2">
             {/* Tech Tags */}
-            <div className="flex flex-wrap gap-1.5 mb-4">
+            <div className="flex flex-wrap gap-1.5">
               {project.tech.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 text-[9px] font-mono tracking-wider bg-slate-950 border border-white/5 rounded-md text-slate-300"
+                  className="px-2.5 py-1 text-[11px] font-mono tracking-wider bg-[#05070A] border border-[rgba(0,255,255,0.18)] rounded-md text-[#FFFFFF]"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            {/* Action buttons */}
-            <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-white/5">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("openProjectModal", { detail: project }))}
-                className="flex-1 min-w-[100px] py-2 px-3 rounded-xl bg-[#38bdf8]/10 hover:bg-[#38bdf8]/20 border border-[#38bdf8]/30 text-xs font-bold text-[#38bdf8] flex items-center justify-center gap-1 transition-all cursor-pointer"
-              >
-                <ArrowUpRight className="w-3.5 h-3.5" /> Details
-              </button>
-
+            {/* Action buttons (Grid 2 columns equal width/height) */}
+            <div className="grid grid-cols-2 gap-[14px] pt-3 border-t border-[rgba(0,255,255,0.18)]">
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="py-2 px-3 rounded-xl bg-slate-950 border border-white/10 hover:border-[#38bdf8]/40 text-xs font-semibold text-slate-300 hover:text-white flex items-center justify-center gap-1 transition"
+                className="py-2.5 px-3 rounded-xl bg-white/[0.04] border border-[rgba(0,255,255,0.18)] hover:border-[#00FFFF] hover:text-[#00FFFF] text-xs font-bold text-[#FFFFFF] flex items-center justify-center gap-1.5 transition-colors"
                 title="View Code Repository"
               >
-                <Github className="w-3.5 h-3.5" /> Code
+                <Github className="w-3.5 h-3.5 text-[#00FFFF]" /> Code
               </a>
 
-              {project.liveUrl && project.liveUrl !== "#" && (
+              {project.liveUrl && project.liveUrl !== "#" ? (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="py-2 px-3 rounded-xl bg-gradient-to-r from-[#38bdf8] to-[#06b6d4] text-xs font-bold text-[#020617] flex items-center justify-center gap-1 transition shadow-sm hover:shadow-[#38bdf8]/25"
+                  className="py-2.5 px-3 rounded-xl bg-[#00FFFF]/10 border border-[#00FFFF]/40 text-[#00FFFF] hover:bg-[#00FFFF]/20 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
                   title="View Live Platform"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" /> Live
+                  <ExternalLink className="w-3.5 h-3.5 text-[#00FFFF]" /> Live Demo
                 </a>
+              ) : (
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent("openProjectModal", { detail: project }))}
+                  className="py-2.5 px-3 rounded-xl bg-[#00FFFF]/10 border border-[#00FFFF]/40 text-[#00FFFF] hover:bg-[#00FFFF]/20 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#00FFFF]" /> Details
+                </button>
               )}
             </div>
           </div>
@@ -121,7 +123,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#38bdf8] mb-2"
+            className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#00FFFF] mb-2"
           >
             My Built Platforms
           </motion.h3>
@@ -130,7 +132,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white"
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FFFFFF]"
           >
             Featured Projects
           </motion.h2>
@@ -139,48 +141,48 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mt-4 leading-relaxed"
+            className="text-sm sm:text-base text-[#FFFFFF] opacity-90 max-w-2xl mx-auto mt-4 leading-relaxed font-medium"
           >
             Exploring full-stack cloud ecosystems, biometric attendance networks, smart habit logs, and national-scale Indian AI portals.
           </motion.p>
-          <div className="w-24 h-1 bg-[#38bdf8] mt-6 mx-auto rounded-full" />
+          <div className="w-12 h-0.5 bg-[#00FFFF] mt-5 mx-auto rounded-full shadow-[0_0_8px_#00FFFF]" />
         </div>
 
         {/* Projects Subcategory Filter Slider */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1 rounded-full bg-slate-950/80 border border-white/5 relative">
+          <div className="inline-flex p-1.5 rounded-2xl bg-[#0B0F14] border border-[rgba(0,255,255,0.18)] relative gap-2">
             <button
               onClick={() => setFilterType("self")}
-              className={`px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors relative z-10 flex items-center gap-1 cursor-pointer ${
-                filterType === "self" ? "text-white" : "text-slate-400 hover:text-white"
+              className={`px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors relative z-10 flex items-center gap-1.5 cursor-pointer ${
+                filterType === "self" ? "text-[#05070A]" : "text-[#FFFFFF] hover:text-[#00FFFF]"
               }`}
             >
               {filterType === "self" && (
                 <motion.span
                   layoutId="activeProjectsFilter"
-                  className="absolute inset-0 bg-white/5 border border-white/10 rounded-full"
+                  className="absolute inset-0 bg-[#00FFFF] border border-[#00FFFF] rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              <Code className="w-3.5 h-3.5" />
-              Self Projects ({selfProjects.length})
+              <Code className={`w-3.5 h-3.5 relative z-10 ${filterType === "self" ? "text-[#05070A]" : "text-[#00FFFF]"}`} />
+              <span className="relative z-10">Self Projects ({selfProjects.length})</span>
             </button>
 
             <button
               onClick={() => setFilterType("team")}
-              className={`px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors relative z-10 flex items-center gap-1 cursor-pointer ${
-                filterType === "team" ? "text-white" : "text-slate-400 hover:text-white"
+              className={`px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors relative z-10 flex items-center gap-1.5 cursor-pointer ${
+                filterType === "team" ? "text-[#05070A]" : "text-[#FFFFFF] hover:text-[#00FFFF]"
               }`}
             >
               {filterType === "team" && (
                 <motion.span
                   layoutId="activeProjectsFilter"
-                  className="absolute inset-0 bg-white/5 border border-white/10 rounded-full"
+                  className="absolute inset-0 bg-[#00FFFF] border border-[#00FFFF] rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              <Users className="w-3.5 h-3.5" />
-              Team Projects ({teamProjects.length})
+              <Users className={`w-3.5 h-3.5 relative z-10 ${filterType === "team" ? "text-[#05070A]" : "text-[#00FFFF]"}`} />
+              <span className="relative z-10">Team Projects ({teamProjects.length})</span>
             </button>
           </div>
         </div>
@@ -199,11 +201,11 @@ export default function Projects() {
                 className="space-y-6"
               >
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="h-px bg-white/10 grow" />
-                  <h3 className="font-display font-bold text-xs uppercase tracking-[0.3em] text-slate-400">
+                  <div className="h-px bg-[rgba(0,255,255,0.18)] grow" />
+                  <h3 className="font-display font-bold text-xs uppercase tracking-[0.3em] text-[#00FFFF]">
                     Self-Authored Innovations
                   </h3>
-                  <div className="h-px bg-white/10 grow" />
+                  <div className="h-px bg-[rgba(0,255,255,0.18)] grow" />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -223,11 +225,11 @@ export default function Projects() {
                 className="space-y-6"
               >
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="h-px bg-white/10 grow" />
-                  <h3 className="font-display font-bold text-xs uppercase tracking-[0.3em] text-[#38bdf8]">
+                  <div className="h-px bg-[rgba(0,255,255,0.18)] grow" />
+                  <h3 className="font-display font-bold text-xs uppercase tracking-[0.3em] text-[#00FFFF]">
                     Collaborative Team Projects
                   </h3>
-                  <div className="h-px bg-white/10 grow" />
+                  <div className="h-px bg-[rgba(0,255,255,0.18)] grow" />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -242,3 +244,4 @@ export default function Projects() {
     </section>
   );
 }
+

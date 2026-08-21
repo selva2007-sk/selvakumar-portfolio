@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useMotionValue, animate } from "motion/react";
 import {
   Code, Palette, FileCode, Atom, Server, Database,
   Binary, Coffee, Cpu, Smartphone, BrainCircuit, GitBranch,
-  Award, CheckCircle2, ChevronRight, ExternalLink, Sparkles, Filter, X
+  Award, CheckCircle2, ChevronRight, ExternalLink, Filter, X
 } from "lucide-react";
 import { skillsData, certificatesData, internshipsData, type CertificateItem, type SkillItem } from "../data/portfolioData";
 
@@ -46,46 +46,37 @@ function SkillCard({ skill, meta, index, renderSkillIcon }: SkillCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       onViewportEnter={() => setVisible(true)}
-      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.06 }}
-      whileHover={{ y: -8 }}
-      className="group relative h-[180px] overflow-hidden rounded-[24px] border border-white/10 bg-[rgba(255,255,255,0.02)] p-4 text-left shadow-[0_10px_30px_rgba(2,6,23,0.32)] transition-transform duration-250"
+      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.04 }}
+      className="group relative h-[160px] overflow-hidden rounded-[20px] border border-[rgba(0,255,255,0.18)] bg-[#0B0F14] p-4 text-left shadow-sm transition-all duration-250 hover:border-[rgba(0,255,255,0.55)] hover:shadow-[0_0_25px_rgba(0,255,255,0.08)]"
     >
-      <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-transparent to-[rgba(4,19,38,0.6)] pointer-events-none" />
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div className="flex items-center justify-between">
-          <motion.div
-            whileHover={{ scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 260, damping: 22 }}
-            className="flex h-14 w-14 items-center justify-center rounded-md border border-white/6 bg-slate-900/60"
-          >
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[rgba(0,255,255,0.18)] bg-[#05070A]">
             {renderSkillIcon(skill.iconName)}
-          </motion.div>
+          </div>
 
           <div className="text-right">
-            <div className="text-sm font-semibold text-white">{skill.name}</div>
-            <div className="text-xs text-slate-300 mt-1">
+            <div className="text-sm font-bold text-[#FFFFFF]">{skill.name}</div>
+            <div className="text-xs font-mono text-[#FFFFFF] opacity-90 mt-1">
               <AnimatedNumber value={skill.level} start={visible} />%
             </div>
           </div>
         </div>
 
         <div className="mt-3">
-          <div className="relative h-3 w-full rounded-full bg-white/8 overflow-hidden">
+          <div className="relative h-2 w-full rounded-full bg-white/[0.08] overflow-hidden border border-[rgba(0,255,255,0.10)]">
             <motion.div
-              className="absolute left-0 top-0 h-full rounded-full bg-[#00D3F3] shadow-[0_6px_24px_rgba(0,211,243,0.12)]"
+              className="absolute left-0 top-0 h-full rounded-full bg-[#00FFFF] shadow-[0_0_8px_rgba(0,255,255,0.4)]"
               initial={{ width: 0 }}
               animate={visible ? { width: `${skill.level}%` } : { width: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             />
           </div>
         </div>
-      </div>
-      <div className="absolute inset-0 rounded-[24px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="absolute inset-0 rounded-[24px] border border-[#00D3F3]/25 shadow-[0_16px_40px_rgba(0,211,243,0.06)]" />
       </div>
     </motion.div>
   );
@@ -111,50 +102,54 @@ const CertificateCard = /*#__PURE__*/ memo(function CertificateCard({
       onClick={() => onOpen(cert)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ delay: index * 0.05, duration: 0.4, ease: "easeOut" }}
-      whileHover={{ y: -6, scale: 1.01 }}
-      whileTap={{ scale: 0.98 }}
-      className="group relative w-full cursor-pointer overflow-hidden rounded-[20px] border border-white/10 bg-[rgba(255,255,255,0.03)] p-3 text-left backdrop-blur-sm md:backdrop-blur-xl shadow-[0_8px_30px_rgba(2,6,23,0.25)] transition-all duration-300 hover:border-[#00D3F3]/35 focus:outline-none focus:ring-2 focus:ring-[#00D3F3]/30"
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ delay: index * 0.04, duration: 0.4, ease: "easeOut" }}
+      className="group relative w-full cursor-pointer overflow-hidden rounded-[22px] border border-[rgba(0,255,255,0.18)] bg-[#0B0F14]/90 p-0 text-left shadow-[0_12px_32px_rgba(0,0,0,0.30)] transition-all duration-250 hover:border-[rgba(0,255,255,0.55)] hover:shadow-[0_0_25px_rgba(0,255,255,0.08)] focus:outline-none flex flex-col justify-between h-full"
     >
-      <div className="relative overflow-hidden rounded-[16px] aspect-[16/10] bg-slate-950/80 pointer-events-none">
+      {/* Certificate Image (16:10 Aspect Ratio) */}
+      <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#05070A]">
         <img
           src={thumb}
           alt={`${cert.title} certificate`}
           loading="lazy"
           decoding="async"
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(4,19,38,0.65)_100%)]" />
-        <div className="absolute inset-0 border border-white/10 rounded-[16px] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#0B0F14] via-transparent to-transparent pointer-events-none" />
       </div>
 
-      <div className="mt-4 space-y-3 px-1 pb-1 pointer-events-none">
-        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.24em] text-slate-400">
-          <span>{cert.org}</span>
-          <span className="text-[#00D3F3]">{cert.month} {cert.year}</span>
-        </div>
+      {/* Certificate Content */}
+      <div className="p-5 sm:p-6 space-y-2.5 grow flex flex-col justify-between">
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-[12px] font-mono tracking-[0.16em] uppercase text-[#FFFFFF] opacity-80">
+            <span className="text-[#00FFFF] font-semibold">{cert.org}</span>
+            <span>{cert.month} {cert.year}</span>
+          </div>
 
-        <div className="space-y-2">
-          <h4 className="line-clamp-2 text-[1rem] font-semibold leading-6 text-white">
+          <h4 className="line-clamp-2 text-base font-extrabold leading-snug text-[#FFFFFF] group-hover:text-[#FFFFFF] transition-colors">
             {cert.title}
           </h4>
-          <p className="text-sm leading-6 text-slate-400 line-clamp-2">
-            {cert.description}
-          </p>
+
+          {cert.description && (
+            <p className="text-xs sm:text-sm text-[#FFFFFF] opacity-90 leading-relaxed line-clamp-2">
+              {cert.description}
+            </p>
+          )}
         </div>
 
-        <div className="flex flex-wrap gap-2 pt-1">
-          {cert.tags.slice(0, 3).map((tag) => (
-            <span
-              key={`${cert.id}-${tag}`}
-              className="rounded-full border border-[#00D3F3]/20 bg-[#00D3F3]/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8FE8F8]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        {cert.tags && cert.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 pt-2">
+            {cert.tags.slice(0, 4).map((tag) => (
+              <span
+                key={`${cert.id}-${tag}`}
+                className="px-2.5 py-1 text-[11px] font-mono tracking-wider bg-[#05070A] border border-[rgba(0,255,255,0.18)] rounded-md text-[#FFFFFF]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </motion.button>
   );
@@ -170,7 +165,6 @@ export default function Achievements() {
   const [, setHasEntered] = useState(false);
   const certificates = useMemo(() => certificatesData, []);
 
-  // ESC key press & background scroll lock handling
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -181,13 +175,11 @@ export default function Achievements() {
         }
       }
     };
-
     if (selectedCertificate !== null || showAllCertificatesModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.style.overflow = "";
@@ -195,7 +187,6 @@ export default function Achievements() {
     };
   }, [selectedCertificate, showAllCertificatesModal]);
 
-  // Section entrance observer
   useEffect(() => {
     if (!sectionRef.current) return;
     const obs = new IntersectionObserver(
@@ -221,7 +212,6 @@ export default function Achievements() {
     setSelectedCertificate(cert);
   }, []);
 
-  // Modal Filter options & filtering logic
   const modalFilterCategories = ["All", "AI & ML", "MongoDB", "Cloud", "Internship", "Workshop"];
 
   const filteredModalCertificates = useMemo(() => {
@@ -278,59 +268,42 @@ export default function Achievements() {
   const renderSkillIcon = (iconName: string) => {
     switch (iconName) {
       case "HtmlIcon":
-        return <Code className="w-5 h-5 text-orange-500" />;
+        return <Code className="w-5 h-5 text-[#00FFFF]" />;
       case "CssIcon":
-        return <Palette className="w-5 h-5 text-[#00D3F3]" />;
+        return <Palette className="w-5 h-5 text-[#00FFFF]" />;
       case "JsIcon":
-        return <FileCode className="w-5 h-5 text-yellow-400" />;
+        return <FileCode className="w-5 h-5 text-[#00FFFF]" />;
       case "ReactIcon":
-        return <Atom className="w-5 h-5 text-[#00D3F3] animate-spin-slow" />;
+        return <Atom className="w-5 h-5 text-[#00FFFF]" />;
       case "NodeIcon":
-        return <Server className="w-5 h-5 text-green-500" />;
+        return <Server className="w-5 h-5 text-[#00FFFF]" />;
       case "MongoIcon":
-        return <Database className="w-5 h-5 text-emerald-500" />;
+        return <Database className="w-5 h-5 text-[#00FFFF]" />;
       case "PythonIcon":
-        return <Binary className="w-5 h-5 text-[#00D3F3]" />;
+        return <Binary className="w-5 h-5 text-[#00FFFF]" />;
       case "JavaIcon":
-        return <Coffee className="w-5 h-5 text-amber-600" />;
+        return <Coffee className="w-5 h-5 text-[#00FFFF]" />;
       case "CIcon":
-        return <Cpu className="w-5 h-5 text-indigo-400" />;
+        return <Cpu className="w-5 h-5 text-[#00FFFF]" />;
       case "FlutterIcon":
-        return <Smartphone className="w-5 h-5 text-sky-400" />;
+        return <Smartphone className="w-5 h-5 text-[#00FFFF]" />;
       case "AiIcon":
-        return <BrainCircuit className="w-5 h-5 text-[#00D3F3]" />;
+        return <BrainCircuit className="w-5 h-5 text-[#00FFFF]" />;
       case "GithubIcon":
-        return <GitBranch className="w-5 h-5 text-slate-300" />;
+        return <GitBranch className="w-5 h-5 text-[#00FFFF]" />;
       default:
-        return <CheckCircle2 className="w-5 h-5 text-[#00D3F3]" />;
+        return <CheckCircle2 className="w-5 h-5 text-[#00FFFF]" />;
     }
   };
 
   const filteredSkills = activeFilter === "All" ? skillsData : skillsData.filter((skill) => skillMeta[skill.iconName]?.category === activeFilter);
 
   return (
-    <motion.section
+    <section
       id="achievements"
       ref={sectionRef}
-      initial={{ opacity: 0, scale: 0.96, filter: "blur(20px)" }}
-      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 1, ease: "easeOut" }}
       className="py-24 relative bg-transparent overflow-hidden"
     >
-      {/* Background abstract layout elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(16)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute h-1.5 w-1.5 rounded-full bg-white/20"
-            animate={{ x: [0, 20 + (index % 5) * 8, 0], y: [0, -24 - (index % 4) * 10, 0], opacity: [0.15, 0.5, 0.15] }}
-            transition={{ duration: 7 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-            style={{ left: `${8 + (index % 8) * 11}%`, top: `${8 + (index % 6) * 13}%` }}
-          />
-        ))}
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
         {/* Section Title */}
@@ -340,7 +313,7 @@ export default function Achievements() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#38bdf8] mb-2"
+            className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#00FFFF] mb-2"
           >
             Technical Depth & Recognition
           </motion.h3>
@@ -350,7 +323,7 @@ export default function Achievements() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-white"
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FFFFFF]"
           >
             Achievements & Certifications
           </motion.h2>
@@ -360,32 +333,33 @@ export default function Achievements() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm sm:text-base text-slate-300/90 max-w-2xl mx-auto mt-4 leading-7 sm:leading-8 font-medium"
+            className="text-sm sm:text-base text-[#FFFFFF] opacity-90 max-w-2xl mx-auto mt-4 leading-relaxed font-medium"
           >
-            A cinematic overview of my technical depth, professional initiative, and product-minded execution.
+            A clean overview of my technical depth, professional certifications, and internship execution.
           </motion.p>
-          <div className="w-24 h-1 bg-[#38bdf8] mt-6 mx-auto rounded-full" />
+          <div className="w-12 h-0.5 bg-[#00FFFF] mt-5 mx-auto rounded-full shadow-[0_0_8px_#00FFFF]" />
         </div>
 
         {/* Tab Selection Layout */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex flex-wrap justify-center p-1.5 rounded-full bg-slate-950/80 border border-white/5 shadow-xl relative gap-2">
+          <div className="inline-flex flex-wrap justify-center p-1.5 rounded-2xl bg-[#0B0F14] border border-[rgba(0,255,255,0.18)] shadow-lg relative gap-2">
 
             {/* Skills Tab Trigger */}
             <button
               type="button"
               onClick={() => setActiveTab("skills")}
-              className={`relative z-10 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 flex items-center gap-2 cursor-pointer ${activeTab === "skills" ? "text-white font-extrabold" : "text-slate-400 hover:text-white"
-                }`}
+              className={`relative z-10 px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-200 flex items-center gap-2 cursor-pointer ${
+                activeTab === "skills" ? "text-[#05070A]" : "text-[#FFFFFF] hover:text-[#00FFFF]"
+              }`}
             >
               {activeTab === "skills" && (
                 <motion.span
                   layoutId="activeCredentialsTab"
-                  className="absolute inset-0 bg-[#00D3F3] rounded-full shadow-lg shadow-[#00D3F3]/10"
+                  className="absolute inset-0 bg-[#00FFFF] border border-[#00FFFF] rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   transition={{ type: "spring", stiffness: 350, damping: 25 }}
                 />
               )}
-              <Code className="w-4 h-4 relative z-10" />
+              <Code className={`w-4 h-4 relative z-10 ${activeTab === "skills" ? "text-[#05070A]" : "text-[#00FFFF]"}`} />
               <span className="relative z-10">Technical Skills</span>
             </button>
 
@@ -393,17 +367,18 @@ export default function Achievements() {
             <button
               type="button"
               onClick={() => setActiveTab("certifications")}
-              className={`relative z-10 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 flex items-center gap-2 cursor-pointer ${activeTab === "certifications" ? "text-white font-extrabold" : "text-slate-400 hover:text-white"
-                }`}
+              className={`relative z-10 px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-200 flex items-center gap-2 cursor-pointer ${
+                activeTab === "certifications" ? "text-[#05070A]" : "text-[#FFFFFF] hover:text-[#00FFFF]"
+              }`}
             >
               {activeTab === "certifications" && (
                 <motion.span
                   layoutId="activeCredentialsTab"
-                  className="absolute inset-0 bg-[#00D3F3] rounded-full shadow-lg shadow-[#00D3F3]/10"
+                  className="absolute inset-0 bg-[#00FFFF] border border-[#00FFFF] rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   transition={{ type: "spring", stiffness: 350, damping: 25 }}
                 />
               )}
-              <Award className="w-4 h-4 relative z-10" />
+              <Award className={`w-4 h-4 relative z-10 ${activeTab === "certifications" ? "text-[#05070A]" : "text-[#00FFFF]"}`} />
               <span className="relative z-10">Certifications</span>
             </button>
 
@@ -411,17 +386,18 @@ export default function Achievements() {
             <button
               type="button"
               onClick={() => setActiveTab("internships")}
-              className={`relative z-10 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 flex items-center gap-2 cursor-pointer ${activeTab === "internships" ? "text-white font-extrabold" : "text-slate-400 hover:text-white"
-                }`}
+              className={`relative z-10 px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-200 flex items-center gap-2 cursor-pointer ${
+                activeTab === "internships" ? "text-[#05070A]" : "text-[#FFFFFF] hover:text-[#00FFFF]"
+              }`}
             >
               {activeTab === "internships" && (
                 <motion.span
                   layoutId="activeCredentialsTab"
-                  className="absolute inset-0 bg-[#00D3F3] rounded-full shadow-lg shadow-[#00D3F3]/10"
+                  className="absolute inset-0 bg-[#00FFFF] border border-[#00FFFF] rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   transition={{ type: "spring", stiffness: 350, damping: 25 }}
                 />
               )}
-              <Award className="w-4 h-4 relative z-10" />
+              <Award className={`w-4 h-4 relative z-10 ${activeTab === "internships" ? "text-[#05070A]" : "text-[#00FFFF]"}`} />
               <span className="relative z-10">Internship</span>
             </button>
 
@@ -439,7 +415,7 @@ export default function Achievements() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.3 }}
                 className="space-y-8"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 auto-rows-fr">
@@ -460,32 +436,32 @@ export default function Achievements() {
 
             ) : activeTab === "certifications" ? (
 
-              /* 2. FEATURED CERTIFICATIONS GALLERY PANEL (Top 11 Featured + View All Button) */
+              /* 2. FEATURED CERTIFICATIONS GALLERY PANEL */
               <motion.div
                 key="certifications-tab"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.3 }}
                 className="space-y-10"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {certificates.slice(0, 11).map((cert: CertificateItem, index: number) => (
                     <CertificateCard key={cert.id} cert={cert} index={index} onOpen={openCertificate} />
                   ))}
                 </div>
 
-                {/* View All Certificates (20+) Trigger Button */}
+                {/* View All Certificates Trigger Button */}
                 <div className="flex justify-center pt-4">
                   <motion.button
                     type="button"
                     onClick={() => setShowAllCertificatesModal(true)}
-                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    className="group relative inline-flex items-center gap-3 rounded-full border border-[#00D3F3]/40 bg-gradient-to-r from-[#00D3F3]/15 via-slate-900/90 to-[#00D3F3]/10 px-8 py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_25px_rgba(0,211,243,0.2)] hover:border-[#00D3F3] hover:shadow-[0_0_35px_rgba(0,211,243,0.4)] transition-all duration-300 cursor-pointer"
+                    className="group relative inline-flex items-center gap-2.5 rounded-2xl border border-[rgba(0,255,255,0.25)] bg-white/[0.04] px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] shadow-md hover:border-[#00FFFF] hover:text-[#00FFFF] transition-all duration-300 cursor-pointer"
                   >
                     <span>View All Certificates ({certificates.length}+)</span>
-                    <ChevronRight className="h-4 w-4 text-[#00D3F3] group-hover:translate-x-1.5 transition-transform duration-300" />
+                    <ChevronRight className="h-4 w-4 text-[#00FFFF] group-hover:translate-x-1 transition-transform duration-300" />
                   </motion.button>
                 </div>
               </motion.div>
@@ -497,18 +473,17 @@ export default function Achievements() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.3 }}
                 className="grid grid-cols-1 gap-6"
               >
                 {internshipsData.map((internship, index) => (
                   <motion.div
                     key={internship.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.08 }}
-                    whileHover={{ y: -5, borderColor: "rgba(59, 130, 246, 0.3)" }}
-                    className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-[#00D3F3]/30 transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
+                    className="rounded-[22px] border border-[rgba(0,255,255,0.18)] bg-[#0B0F14]/90 p-6 sm:p-7 transition-all duration-250 hover:border-[rgba(0,255,255,0.55)] hover:shadow-[0_0_25px_rgba(0,255,255,0.08)] shadow-lg overflow-hidden text-left"
                   >
                     <div className="flex flex-col lg:flex-row gap-6 items-start">
                       {internship.image && (
@@ -516,49 +491,49 @@ export default function Achievements() {
                           href={internship.credentialUrl || "#"}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full lg:w-1/3 rounded-3xl overflow-hidden border border-white/10 bg-slate-950/70 cursor-pointer group block"
+                          className="w-full lg:w-2/5 aspect-[16/9] rounded-2xl overflow-hidden border border-[rgba(0,255,255,0.18)] bg-[#05070A] cursor-pointer group/img block shrink-0"
                         >
                           <img
                             src={internship.image}
                             alt={`${internship.title} certificate preview`}
-                            className="w-full h-full object-cover min-h-55 transition-transform duration-300 group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover/img:scale-[1.02]"
                             referrerPolicy="no-referrer"
                           />
                         </a>
                       )}
 
-                      <div className="flex-1">
-                        <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#00D3F3]">
-                          <Award className="w-3.5 h-3.5" />
-                          Internship Experience
-                        </div>
-                        <h4 className="font-display font-bold text-slate-100 mt-3 text-xl">
-                          {internship.title}
-                        </h4>
-                        <p className="text-sm text-slate-400 mt-1">
-                          {internship.org} • {internship.duration}
-                        </p>
+                      <div className="flex-1 space-y-4">
+                        <div className="space-y-1">
+                          <div className="flex flex-wrap items-center justify-between text-[12px] font-mono tracking-[0.16em] uppercase text-[#FFFFFF] opacity-80">
+                            <span className="text-[#00FFFF] font-semibold">{internship.org}</span>
+                            <span>{internship.duration}</span>
+                          </div>
 
-                        <p className="text-slate-300 mt-4 leading-relaxed">
+                          <h4 className="font-display font-extrabold text-xl sm:text-2xl text-[#FFFFFF]">
+                            {internship.title}
+                          </h4>
+                        </div>
+
+                        <p className="text-sm text-[#FFFFFF] opacity-90 leading-[1.7]">
                           {internship.description}
                         </p>
 
                         {internship.metrics && internship.metrics.length > 0 && (
-                          <div className="grid grid-cols-3 gap-3 my-4 p-3 rounded-2xl bg-slate-950/80 border border-white/5">
+                          <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl bg-[#05070A] border border-[rgba(0,255,255,0.18)]">
                             {internship.metrics.map((m, idx) => (
                               <div key={idx} className="text-center">
-                                <div className="font-mono text-sm font-bold text-[#00D3F3]">{m.value}</div>
-                                <div className="text-[10px] text-slate-400 font-mono uppercase">{m.label}</div>
+                                <div className="font-mono text-sm font-extrabold text-[#00FFFF]">{m.value}</div>
+                                <div className="text-[10px] text-[#FFFFFF] opacity-80 font-mono uppercase tracking-wider">{m.label}</div>
                               </div>
                             ))}
                           </div>
                         )}
 
-                        <div className="flex flex-wrap gap-2 mt-5">
+                        <div className="flex flex-wrap gap-1.5 pt-1">
                           {internship.skills.map((skill) => (
                             <span
                               key={skill}
-                              className="px-3 py-1 rounded-full text-xs font-medium bg-slate-900/80 text-slate-300 border border-white/10"
+                              className="px-2.5 py-1 text-[11px] font-mono tracking-wider bg-[#05070A] border border-[rgba(0,255,255,0.18)] rounded-md text-[#FFFFFF]"
                             >
                               {skill}
                             </span>
@@ -566,18 +541,18 @@ export default function Achievements() {
                         </div>
 
                         {internship.credentialUrl && (
-                          <motion.a
-                            href={internship.credentialUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="group mt-6 inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#00D3F3] bg-[#00D3F3]/10 border border-[#00D3F3]/30 shadow-[0_0_12px_rgba(0,211,243,0.15)] hover:bg-[#00D3F3]/20 hover:border-[#00D3F3] hover:text-white hover:shadow-[0_0_20px_rgba(0,211,243,0.4)] transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#00D3F3]/50"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5 text-[#00D3F3] group-hover:text-white transition-colors duration-300" />
-                            <span>Verify Certificate</span>
-                            <ChevronRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 text-[#00D3F3] group-hover:text-white" />
-                          </motion.a>
+                          <div className="pt-2">
+                            <a
+                              href={internship.credentialUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#00FFFF]/10 border border-[#00FFFF]/40 text-[#00FFFF] hover:bg-[#00FFFF]/20 transition-colors cursor-pointer"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5 text-[#00FFFF]" />
+                              <span>Verify Certificate</span>
+                              <ChevronRight className="w-3.5 h-3.5 text-[#00FFFF]" />
+                            </a>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -587,7 +562,7 @@ export default function Achievements() {
             )}
           </AnimatePresence>
 
-          {/* 1. Full "View All Certificates (20+)" Modal Drawer */}
+          {/* 1. Full "View All Certificates" Modal Drawer */}
           {typeof document !== "undefined" &&
             ReactDOM.createPortal(
               <AnimatePresence>
@@ -597,33 +572,33 @@ export default function Achievements() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                     onClick={() => setShowAllCertificatesModal(false)}
-                    className="fixed inset-0 top-0 left-0 w-screen h-screen z-[99990] flex items-center justify-center bg-black/85 backdrop-blur-xl p-4 sm:p-6 md:p-8"
+                    className="fixed inset-0 top-0 left-0 w-screen h-screen z-[99990] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6 md:p-8"
                     role="dialog"
                     aria-modal="true"
                   >
                     <motion.div
                       key="all-certificates-modal-card"
-                      initial={{ opacity: 0, scale: 0.94, y: 15 }}
+                      initial={{ opacity: 0, scale: 0.96, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.94, y: 15 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      exit={{ opacity: 0, scale: 0.96, y: 10 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
                       onClick={(event) => event.stopPropagation()}
-                      className="relative w-full max-w-[92vw] lg:max-w-[85vw] xl:max-w-[80vw] max-h-[90vh] flex flex-col rounded-3xl border border-white/15 bg-[#041326]/95 backdrop-blur-2xl p-6 sm:p-8 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.8)] overflow-hidden"
+                      className="relative w-full max-w-[92vw] lg:max-w-[85vw] xl:max-w-[80vw] max-h-[90vh] flex flex-col rounded-3xl border border-[rgba(0,255,255,0.25)] bg-[#0B0F14]/98 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl overflow-hidden"
                     >
                       {/* Modal Header */}
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-white/10 pr-10">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[rgba(0,255,255,0.18)] pr-10">
                         <div>
                           <div className="flex items-center gap-3">
-                            <h3 className="font-display text-xl sm:text-3xl font-bold text-white">
+                            <h3 className="font-display text-xl sm:text-3xl font-bold text-[#FFFFFF]">
                               All Certifications & Credentials
                             </h3>
-                            <span className="rounded-full border border-[#00D3F3]/30 bg-[#00D3F3]/10 px-3 py-1 text-xs font-semibold text-[#00D3F3]">
+                            <span className="rounded-full border border-[rgba(0,255,255,0.25)] bg-[#10151C] px-3 py-1 text-xs font-mono text-[#00FFFF]">
                               {certificates.length} Total
                             </span>
                           </div>
-                          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+                          <p className="text-xs sm:text-sm text-[#FFFFFF] opacity-80 mt-1">
                             Explore full credentials across AI, Full Stack, Databases, Cloud & Workshops.
                           </p>
                         </div>
@@ -631,7 +606,7 @@ export default function Achievements() {
                         <button
                           type="button"
                           onClick={() => setShowAllCertificatesModal(false)}
-                          className="absolute top-5 right-5 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#00D3F3] cursor-pointer"
+                          className="absolute top-5 right-5 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 hover:text-[#00FFFF] focus:outline-none cursor-pointer"
                           aria-label="Close all certificates modal"
                         >
                           <X className="h-5 w-5" />
@@ -639,19 +614,19 @@ export default function Achievements() {
                       </div>
 
                       {/* Filter Chips Bar */}
-                      <div className="flex flex-wrap items-center gap-2 py-4 border-b border-white/5">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 flex items-center gap-1.5">
-                          <Filter className="w-3.5 h-3.5 text-[#00D3F3]" /> Filter:
+                      <div className="flex flex-wrap items-center gap-2 py-4 border-b border-[rgba(0,255,255,0.18)]">
+                        <span className="text-xs font-mono uppercase tracking-wider text-[#FFFFFF] opacity-80 mr-2 flex items-center gap-1.5">
+                          <Filter className="w-3.5 h-3.5 text-[#00FFFF]" /> Filter:
                         </span>
                         {modalFilterCategories.map((cat) => (
                           <button
                             key={cat}
                             type="button"
                             onClick={() => setModalFilter(cat)}
-                            className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                            className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                               modalFilter === cat
-                                ? "bg-[#00D3F3] text-[#041326] font-bold shadow-[0_0_15px_rgba(0,211,243,0.3)]"
-                                : "bg-white/5 text-slate-300 border border-white/10 hover:border-[#00D3F3]/40 hover:text-white"
+                                ? "bg-[#00FFFF] text-[#05070A] border border-[#00FFFF] font-bold"
+                                : "bg-[#05070A] text-[#FFFFFF] border border-[rgba(0,255,255,0.18)] hover:text-[#00FFFF] hover:border-[#00FFFF]"
                             }`}
                           >
                             {cat}
@@ -659,7 +634,7 @@ export default function Achievements() {
                         ))}
                       </div>
 
-                      {/* Modal Certificate Grid with Scrollable Box */}
+                      {/* Modal Certificate Grid */}
                       <div className="flex-1 overflow-y-auto pt-6 pr-1">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-6">
                           {filteredModalCertificates.map((cert: CertificateItem, index: number) => (
@@ -684,37 +659,37 @@ export default function Achievements() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                     onClick={closeModal}
-                    className="fixed inset-0 top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6 md:p-8"
+                    className="fixed inset-0 top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-6"
                     role="dialog"
                     aria-modal="true"
                   >
                     <motion.div
                       key="certificate-modal-card"
-                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
                       onClick={(event) => event.stopPropagation()}
-                      className="relative w-full max-w-[90vw] sm:max-w-[75vw] md:max-w-[65vw] lg:max-w-[60vw] max-h-[85vh] flex flex-col items-center justify-center rounded-2xl border border-white/15 bg-[#041326]/95 backdrop-blur-2xl p-4 sm:p-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)]"
+                      className="relative w-[min(720px,90vw)] max-h-[80vh] flex flex-col items-center justify-center rounded-[22px] border border-[rgba(0,255,255,0.25)] bg-[#0B0F14]/98 backdrop-blur-xl p-4 sm:p-5 shadow-2xl overflow-hidden"
                     >
                       {/* Close (X) button */}
                       <button
                         type="button"
                         onClick={closeModal}
-                        className="absolute top-3 right-3 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#00D3F3] cursor-pointer"
+                        className="absolute top-3 right-3 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 hover:text-[#00FFFF] focus:outline-none cursor-pointer"
                         aria-label="Close certificate preview"
                       >
                         <X className="h-5 w-5" />
                       </button>
 
                       {/* Certificate Image Container */}
-                      <div className="relative w-full flex-1 flex items-center justify-center min-h-[50vh] max-h-[70vh] p-2">
+                      <div className="relative w-full flex-1 flex items-center justify-center max-h-[62vh] p-2">
                         <img
                           src={selectedCertificate.image}
                           alt={selectedCertificate.title}
-                          className="max-w-full max-h-[70vh] w-auto h-auto object-contain rounded-xl select-none"
+                          className="max-w-full max-h-[62vh] w-auto h-auto object-contain rounded-xl select-none"
                           loading="eager"
                           decoding="async"
                         />
@@ -722,10 +697,10 @@ export default function Achievements() {
 
                       {/* Title & Organization Info */}
                       <div className="w-full mt-2 text-center px-2">
-                        <h3 className="text-base sm:text-lg font-semibold text-white truncate">
+                        <h3 className="text-base sm:text-lg font-extrabold text-[#FFFFFF] truncate">
                           {selectedCertificate.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+                        <p className="text-xs sm:text-sm text-[#00FFFF] mt-0.5 font-mono">
                           {selectedCertificate.org} {selectedCertificate.year ? `• ${selectedCertificate.year}` : ""}
                         </p>
                       </div>
@@ -738,8 +713,7 @@ export default function Achievements() {
         </div>
 
       </div>
-    </motion.section>
+    </section>
   );
 }
-
 

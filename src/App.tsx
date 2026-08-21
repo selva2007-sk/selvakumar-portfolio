@@ -60,6 +60,11 @@ export default function App() {
             }
             const scrolledDown = window.scrollY > 120;
             setIsScrolledDown((prev) => (prev !== scrolledDown ? scrolledDown : prev));
+
+            // Instant bottom scroll activation for Contact
+            if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 180) {
+              setActiveSection("contact");
+            }
           }
         });
         ticking = true;
@@ -83,7 +88,7 @@ export default function App() {
     const sections = ["home", "about", "journey", "achievements", "projects", "contact"];
     const observerOptions = {
       root: null,
-      rootMargin: "-30% 0px -50% 0px", // Activates when the section covers the viewport center
+      rootMargin: "-15% 0px -30% 0px", // Fast activation as sections cross top/middle viewport
       threshold: 0,
     };
 
@@ -132,7 +137,11 @@ export default function App() {
             style={{ width: "0%" }}
           />
 
-          <Navbar activeSection={activeSection} isScrolledDown={isScrolledDown} />
+          <Navbar
+            activeSection={activeSection}
+            isScrolledDown={isScrolledDown}
+            onSectionChange={(id) => setActiveSection(id)}
+          />
 
           {/* Structured Portfolio Viewports */}
           <main className="relative z-10">

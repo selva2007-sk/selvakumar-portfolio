@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { GraduationCap, MapPin, Calendar, Compass, UserCheck, Download } from "lucide-react";
+import { GraduationCap, MapPin, Calendar, Download } from "lucide-react";
 import { educationList } from "../data/portfolioData";
 
 function AnimatedCounter({ value, suffix = "", duration = 1400 }: { value: number; suffix?: string; duration?: number }) {
@@ -50,13 +50,13 @@ export default function About() {
         className="max-w-7xl mx-auto px-6 md:px-12 relative z-10"
       >
         <div className="text-center md:text-left mb-16">
-          <h3 className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#38bdf8] mb-2">
+          <h3 className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#00FFFF] mb-2">
             Who I Am
           </h3>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FFFFFF]">
             About Me
           </h2>
-          <div className="w-16 h-1 bg-[#38bdf8] mt-4 mx-auto md:mx-0 rounded-full" />
+          <div className="w-12 h-0.5 bg-[#00FFFF] mt-3 mx-auto md:mx-0 rounded-full shadow-[0_0_8px_#00FFFF]" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -66,34 +66,25 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative p-2 rounded-3xl bg-gradient-to-b from-[#38bdf8]/20 via-[#8b5cf6]/10 to-transparent border border-[#38bdf8]/30 glow-blue max-w-[320px] md:max-w-90 hover-glow-cyan"
+              className="relative p-2 rounded-3xl bg-[#0B0F14] border border-[rgba(0,255,255,0.18)] max-w-[320px] md:max-w-90 shadow-xl"
             >
-              <div className="absolute inset-0 border border-[#38bdf8]/30 rounded-3xl animate-[spin_8s_linear_infinite] pointer-events-none" />
-              <div className="absolute -inset-1 border border-[#8b5cf6]/20 rounded-3xl animate-[spin_12s_linear_infinite] pointer-events-none" />
-
-              <div className="w-full aspect-square rounded-2xl bg-slate-950 flex items-center justify-center border border-white/10 relative overflow-hidden group select-none min-h-70 md:min-h-80 transition-transform duration-500 hover:shadow-[0_0_45px_rgba(56,189,248,0.25)]">
+              <div className="w-full aspect-square rounded-2xl bg-[#05070A] flex items-center justify-center border border-[rgba(0,255,255,0.18)] relative overflow-hidden group select-none min-h-70 md:min-h-80">
                 <img
-                  src="/images/selva.jpeg"
+                  src="/images/Selva.png"
                   alt="Selva profile"
-                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
                   width={640}
                   height={640}
                 />
 
-                <div className="absolute inset-0 border-2 border-white/5 rounded-2xl pointer-events-none z-10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 pointer-events-none z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#05070A] via-transparent to-transparent opacity-60 pointer-events-none z-10" />
 
-                <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-[#38bdf8]/70 pointer-events-none z-20" />
-                <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-[#38bdf8]/70 pointer-events-none z-20" />
-                <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-[#38bdf8]/70 pointer-events-none z-20" />
-                <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-[#38bdf8]/70 pointer-events-none z-20" />
-
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent p-4 flex flex-col justify-end z-20">
-                  <div className="backdrop-blur-[2px] bg-slate-950/40 p-2.5 rounded-xl border border-white/5 shadow-inner">
-                    <h4 className="font-display font-extrabold text-sm text-white tracking-wide text-center">SELVAKUMAR S</h4>
-                    <p className="text-[9px] font-mono text-[#38bdf8] font-bold tracking-[0.18em] uppercase text-center mt-0.5">Developer Profile</p>
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#05070A]/95 via-[#05070A]/70 to-transparent p-4 flex flex-col justify-end z-20">
+                  <div className="backdrop-blur-md bg-[#0B0F14]/90 p-2.5 rounded-xl border border-[rgba(0,255,255,0.18)]">
+                    <h4 className="font-display font-bold text-sm text-[#FFFFFF] tracking-wide text-center">SELVAKUMAR S</h4>
+                    <p className="text-[9px] font-mono text-[#00FFFF] font-bold tracking-[0.18em] uppercase text-center mt-0.5">Developer Profile</p>
                   </div>
                 </div>
               </div>
@@ -106,26 +97,26 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg md:text-xl font-medium text-slate-300 leading-relaxed"
+              className="text-lg md:text-xl font-medium text-[#FFFFFF] leading-relaxed"
             >
               I'm a{' '}
-              <span className="text-[#38bdf8] font-bold transition-all duration-300 hover:text-[#7dd3fc] hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">
+              <span className="text-[#00FFFF] font-bold">
                 Third-Year B.Tech Student
               </span>{' '}
               specializing in{' '}
-              <span className="text-[#38bdf8] font-bold transition-all duration-300 hover:text-[#7dd3fc] hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">
+              <span className="text-[#00FFFF] font-bold">
                 Information Technology
               </span>{' '}
               at{' '}
-              <span className="text-[#38bdf8] font-bold transition-all duration-300 hover:text-[#7dd3fc] hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]">
+              <span className="text-[#00FFFF] font-bold">
                 Mahendra Engineering College
               </span>
               , with a strong passion for{' '}
-              <span className="text-[#8b5cf6] font-semibold transition-all duration-300 hover:text-[#a78bfa] hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.4)]">
+              <span className="text-[#00FFFF] font-semibold">
                 Full Stack Development
               </span>
               ,{' '}
-              <span className="text-[#06b6d4] font-semibold transition-all duration-300 hover:text-[#67e8f9] hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.4)]">
+              <span className="text-[#00FFFF] font-semibold">
                 Artificial Intelligence
               </span>
               , and innovative software solutions.
@@ -136,7 +127,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-sm sm:text-base text-slate-400 leading-relaxed"
+              className="text-sm sm:text-base text-[#FFFFFF] opacity-90 leading-relaxed"
             >
               My technical focus spans full-stack architectures mixed with Generative AI capabilities. I thrive on translating abstract customer needs into responsive, fast, and structured interfaces. Exploring multi-industry blueprints, business scaling, and technical research has driven my college tenure.
             </motion.p>
@@ -146,48 +137,46 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-2 gap-4 py-4"
+              className="grid grid-cols-2 gap-4 py-2"
             >
-              <div className="p-4 rounded-xl bg-slate-900/50 border border-white/5 flex flex-col hover-glow-cyan">
-                <span className="text-xs text-slate-500 font-mono">Projects Built</span>
-                <span className="text-xl font-semibold text-slate-100">
+              <div className="p-4 rounded-xl bg-[#0B0F14] border border-[rgba(0,255,255,0.18)] flex flex-col">
+                <span className="text-xs text-[#FFFFFF] opacity-80 font-mono">Projects Built</span>
+                <span className="text-xl font-bold text-[#FFFFFF]">
                   <AnimatedCounter value={12} suffix="+" />
                 </span>
               </div>
-              <div className="p-4 rounded-xl bg-slate-900/50 border border-white/5 flex flex-col hover-glow-purple">
-                <span className="text-xs text-slate-500 font-mono">Focus Area</span>
-                <span className="text-sm font-semibold text-slate-200">Full Stack + Generative AI</span>
+              <div className="p-4 rounded-xl bg-[#0B0F14] border border-[rgba(0,255,255,0.18)] flex flex-col">
+                <span className="text-xs text-[#FFFFFF] opacity-80 font-mono">Focus Area</span>
+                <span className="text-sm font-semibold text-[#FFFFFF]">Full Stack + Generative AI</span>
               </div>
             </motion.div>
 
             <div className="space-y-3">
-              <h4 className="font-display text-sm font-bold tracking-widest text-slate-300 uppercase">
+              <h4 className="font-display text-xs font-bold tracking-widest text-[#FFFFFF] opacity-80 uppercase">
                 Educational Foundation
               </h4>
 
               {educationList.map((edu, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: 0.4 + idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#38bdf8]/40 transition-all flex items-start space-x-4 relative overflow-hidden group hover-glow-cyan"
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.5, delay: 0.1 + idx * 0.08, ease: "easeOut" }}
+                  className="p-5 rounded-2xl bg-[#0B0F14] border border-[rgba(0,255,255,0.18)] hover:border-[rgba(0,255,255,0.55)] transition-colors duration-200 flex items-start space-x-4 relative overflow-hidden group shadow-sm"
                 >
-                  <div className="absolute right-0 top-0 w-24 h-24 bg-[#38bdf8]/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform" />
-                  <div className="p-3 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/20 text-[#38bdf8]">
-                    <GraduationCap className="w-6 h-6" />
+                  <div className="p-3 rounded-xl bg-[#10151C] border border-[rgba(0,255,255,0.18)] text-[#00FFFF]">
+                    <GraduationCap className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
-                    <span className="text-xs font-mono text-slate-400 flex items-center">
-                      <Calendar className="w-3 h-3 mr-1" /> {edu.duration}
+                    <span className="text-xs font-mono text-[#FFFFFF] opacity-80 flex items-center">
+                      <Calendar className="w-3 h-3 mr-1 text-[#00FFFF]" /> {edu.duration}
                     </span>
-                    <h5 className="font-display font-bold text-slate-100 text-lg">
+                    <h5 className="font-display font-bold text-[#FFFFFF] text-base">
                       {edu.degree}
                     </h5>
-                    <p className="text-sm text-slate-400 flex items-center">
-                      <MapPin className="w-3.5 h-3.5 mr-1 text-slate-500" /> {edu.institution}
+                    <p className="text-xs text-[#FFFFFF] opacity-90 flex items-center">
+                      <MapPin className="w-3.5 h-3.5 mr-1 text-[#00FFFF]" /> {edu.institution}
                     </p>
                   </div>
                 </motion.div>
@@ -197,9 +186,9 @@ export default function About() {
             <div className="pt-2">
               <button
                 onClick={handleDownloadResume}
-                className="px-6 py-3 bg-gradient-to-r from-[#38bdf8] to-[#06b6d4] text-[#020617] rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center gap-2 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer shadow-[0_12px_30px_rgba(56,189,248,0.2)] hover:shadow-[0_16px_40px_rgba(56,189,248,0.35)]"
+                className="px-6 py-3 bg-white/[0.04] border border-[rgba(0,255,255,0.25)] text-[#FFFFFF] rounded-2xl text-xs font-bold tracking-wider uppercase flex items-center gap-2 hover:border-[#00FFFF] hover:text-[#00FFFF] transition-all duration-300 cursor-pointer shadow-sm"
               >
-                <Download className="w-4 h-4" />
+                <Download className="w-4 h-4 text-[#00FFFF]" />
                 Download Resume
               </button>
             </div>
@@ -209,3 +198,4 @@ export default function About() {
     </section>
   );
 }
+

@@ -8,42 +8,42 @@ export default function Journey() {
   const getTimelineIcon = (idx: number) => {
     switch (idx) {
       case 0:
-        return <BookOpen className="w-5 h-5 text-emerald-400" />;
+        return <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]" />;
       case 1:
-        return <BookOpen className="w-5 h-5 text-teal-400" />;
+        return <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]" />;
       case 2:
         return <GraduationCapIcon />;
       case 3:
-        return <Laptop className="w-5 h-5 text-[#00D3F3]" />;
+        return <Laptop className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]" />;
       case 4:
-        return <Lock className="w-5 h-5 text-[#00D3F3]" />;
+        return <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]" />;
       case 5:
-        return <Code2 className="w-5 h-5 text-[#00D3F3]" />;
+        return <Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]" />;
       default:
-        return <Zap className="w-5 h-5 text-yellow-400" />;
+        return <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]" />;
     }
   };
 
   return (
-    <section id="journey" className="py-24 relative bg-transparent overflow-hidden">
+    <section id="journey" className="py-12 sm:py-24 relative bg-transparent overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-7xl mx-auto px-6 md:px-12 relative z-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10"
       >
         
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <motion.h3
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#38bdf8] mb-2 flex items-center justify-center gap-1.5"
+            className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#00FFFF] mb-2 flex items-center justify-center gap-1.5"
           >
-            <Zap className="w-3.5 h-3.5 text-[#38bdf8] animate-bounce" /> Achievements & Steps
+            <Zap className="w-3.5 h-3.5 text-[#00FFFF]" /> Achievements & Steps
           </motion.h3>
 
           <motion.h2
@@ -51,7 +51,7 @@ export default function Journey() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white"
+            className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FFFFFF]"
           >
             My Journey
           </motion.h2>
@@ -61,24 +61,21 @@ export default function Journey() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mt-4 leading-relaxed"
+            className="text-xs sm:text-base text-[#FFFFFF] opacity-90 max-w-2xl mx-auto mt-2.5 sm:mt-4 leading-relaxed"
           >
             A timeline of my educational background and professional growth, from the early days of school to my current expertise in Web Development.
           </motion.p>
-          <div className="w-24 h-1 bg-[#38bdf8] mt-6 mx-auto rounded-full" />
+          <div className="w-12 h-0.5 bg-[#00FFFF] mt-4 sm:mt-5 mx-auto rounded-full shadow-[0_0_8px_#00FFFF]" />
         </div>
 
         {/* Timeline Layout */}
-        <div className="relative mt-20">
+        <div className="relative mt-8 sm:mt-20">
           
-          {/* Central Vertical Connecting Line (Hidden on mobile, centered on md+) */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-[#38bdf8] via-[#8b5cf6] to-transparent opacity-30" />
-          
-          {/* Animated Glow overlay that follows down */}
-          <div className="absolute left-4 md:left-1/2 top-4 bottom-20 w-1 -translate-x-1/2 bg-gradient-to-b from-[#38bdf8] to-[#8b5cf6] glow-blue opacity-50 blur-[2px]" />
+          {/* Central / Left Vertical Connecting Line */}
+          <div className="absolute left-3.5 sm:left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-[rgba(0,255,255,0.25)]" />
 
           {/* Timeline Nodes */}
-          <div className="space-y-12">
+          <div className="space-y-6 sm:space-y-12">
             {timelineData.map((item, idx) => {
               const isEven = idx % 2 === 0;
               return (
@@ -88,10 +85,8 @@ export default function Journey() {
                     isEven ? "md:flex-row-reverse" : ""
                   }`}
                 >
-                  {/* Central Node Indicator */}
-                  <div className="absolute left-4 md:left-1/2 top-8 w-8 h-8 rounded-full bg-slate-900 border-2 border-[#38bdf8] flex items-center justify-center -translate-x-1/2 z-20 shadow-[0_0_20px_rgba(56,189,248,0.25)] group">
-                    {/* Glowing pulse ring */}
-                    <div className="absolute inset-0 rounded-full bg-[#38bdf8]/20 animate-ping opacity-75" />
+                  {/* Central / Left Node Indicator */}
+                  <div className="absolute left-3.5 sm:left-4 md:left-1/2 top-5 sm:top-8 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#05070A] border-2 border-[#00FFFF] flex items-center justify-center -translate-x-1/2 z-20 shadow-[0_0_12px_rgba(0,255,255,0.3)]">
                     {getTimelineIcon(idx)}
                   </div>
 
@@ -99,45 +94,41 @@ export default function Journey() {
                   <div className="hidden md:block w-1/2" />
 
                   {/* Right Column: Actual Content Card */}
-                  <div className="w-full md:w-1/2 pl-12 md:pl-8 md:pr-8">
+                  <div className="w-full md:w-1/2 pl-8 sm:pl-10 md:pl-8 md:pr-8">
                     <motion.div
-                      whileHover={{ y: -6, scale: 1.015, borderColor: "rgba(56, 189, 248, 0.4)" }}
-                      initial={{ opacity: 0, y: 40 }}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                      className="glass-card p-6 rounded-2xl border border-white/5 relative overflow-hidden group flex flex-col justify-between hover-glow-cyan"
+                      viewport={{ once: true, amount: 0.15 }}
+                      transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+                      className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-[#0B0F14]/90 border border-[rgba(0,255,255,0.18)] hover:border-[rgba(0,255,255,0.55)] hover:shadow-[0_0_25px_rgba(0,255,255,0.08)] transition-all duration-200 relative overflow-hidden group flex flex-col justify-between"
                     >
-                      {/* Highlighted Gradient accent at corner */}
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#38bdf8]/15 via-[#8b5cf6]/10 to-transparent rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform" />
-
                       <div>
                         {/* Period Tag */}
-                        <span className="inline-block px-3 py-1 rounded-full bg-[#38bdf8]/10 text-[#7dd3fc] border border-[#38bdf8]/20 font-mono text-xs font-semibold mb-4 glow-purple">
+                        <span className="inline-block px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#10151C] text-[#00FFFF] border border-[rgba(0,255,255,0.18)] font-mono text-[11px] sm:text-xs font-semibold mb-2.5 sm:mb-4">
                           {item.year}
                         </span>
 
-                        <h4 className="font-display font-bold text-lg text-slate-100 group-hover:text-[#38bdf8] transition-colors">
+                        <h4 className="font-display font-bold text-base sm:text-lg text-[#FFFFFF] group-hover:text-[#FFFFFF] transition-colors">
                           {item.title}
                         </h4>
                         
-                        <p className="text-xs font-mono text-slate-400 mt-1 uppercase tracking-wider mb-3">
+                        <p className="text-[11px] sm:text-xs font-mono text-[#FFFFFF] opacity-80 mt-0.5 uppercase tracking-wider mb-2 sm:mb-3">
                           {item.subtitle}
                         </p>
 
-                        <p className="text-sm text-slate-400 leading-relaxed mb-3">
+                        <p className="text-xs sm:text-sm text-[#FFFFFF] opacity-90 leading-relaxed mb-2.5 sm:mb-3">
                           {item.description}
                         </p>
 
                         {/* Achievements Bullet List */}
                         {item.achievements && item.achievements.length > 0 && (
-                          <div className="my-3 p-3 rounded-xl bg-slate-950/60 border border-white/5 space-y-1">
-                            <span className="text-[10px] font-mono font-bold uppercase text-[#38bdf8] tracking-wider block mb-1">
+                          <div className="my-2.5 sm:my-3 p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-[#05070A] border border-[rgba(0,255,255,0.18)] space-y-1">
+                            <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase text-[#00FFFF] tracking-wider block mb-1">
                               Key Deliverables & Achievements
                             </span>
                             {item.achievements.map((ach, aIdx) => (
-                              <div key={aIdx} className="text-xs text-slate-300 flex items-start space-x-1.5">
-                                <span className="text-[#38bdf8] shrink-0">▸</span>
+                              <div key={aIdx} className="text-[11px] sm:text-xs text-[#FFFFFF] opacity-90 flex items-start space-x-1.5">
+                                <span className="text-[#00FFFF] shrink-0">▸</span>
                                 <span>{ach}</span>
                               </div>
                             ))}
@@ -146,12 +137,12 @@ export default function Journey() {
                       </div>
 
                       {/* Skills Tags block */}
-                      <div className="mt-5 pt-4 border-t border-white/5">
-                        <div className="flex flex-wrap gap-2">
+                      <div className="mt-3 pt-3 sm:mt-5 sm:pt-4 border-t border-[rgba(0,255,255,0.18)]">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {item.skills.map((skill, sIdx) => (
                             <span
                               key={sIdx}
-                              className="px-2.5 py-1 text-[10px] font-mono tracking-wider text-slate-300 bg-slate-950/80 rounded-md border border-white/5 hover:border-[#38bdf8]/40 transition-all duration-300"
+                              className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-mono tracking-wider text-[#FFFFFF] bg-[#05070A] rounded-md border border-[rgba(0,255,255,0.18)]"
                             >
                               {skill}
                             </span>
@@ -177,7 +168,7 @@ export default function Journey() {
 function GraduationCapIcon() {
   return (
     <svg
-      className="w-5 h-5 text-[#00D3F3]"
+      className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FFFF]"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -204,3 +195,5 @@ function GraduationCapIcon() {
     </svg>
   );
 }
+
+
