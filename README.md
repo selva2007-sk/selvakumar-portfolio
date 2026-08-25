@@ -1,167 +1,158 @@
-🚀 Selvakumar Portfolio
+# 🚀 Selvakumar Portfolio
 
-Premium Personal Portfolio Website showcasing my journey in Full Stack Development with AI, modern web engineering, real-world projects, technical skills, certifications, and professional growth.
+<p align="center">
 
-Live Portfolio
+**Premium Personal Portfolio Website**
 
-Premium dark UI • Interactive typography • AI-powered developer portfolio
+Showcasing my journey in **Full Stack Development with AI**, technical skills, projects, certifications, achievements, and professional growth.
 
-Live Demo ↗
-Full Stack
+</p>
 
-Modern Web Development
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Framer_Motion-000000?style=for-the-badge&logo=framer&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+</p>
 
-AI
+---
 
-Real-world AI Integration
+## 🌐 Live Preview
 
-Performance
+🔗 **Portfolio:** `http://10.223.173.195:3000`
 
-Smooth Responsive Experience
+> Replace this with your deployed domain (Vercel/Netlify/custom domain) after deployment.
 
-👨‍💻 About Me
+---
 
-I'm Selvakumar S, a Third-Year B.Tech Information Technology Student passionate about creating scalable software solutions, modern web experiences, and AI-powered applications.
+# 👨‍💻 About Me
 
-Current Focus
+I'm **Selvakumar S**, a **Third-Year B.Tech Information Technology Student** passionate about building **scalable software solutions**, modern web applications, and AI-powered real-world projects.
 
-🌐 Full Stack Development
+### 🎯 Current Focus
 
-🤖 Artificial Intelligence & AI Tools
+- 🌐 Full Stack Development
+- 🤖 Artificial Intelligence & AI Tools
+- 📱 Mobile App Development
+- ⚡ Modern UI/UX Engineering
+- 🚀 Startup & Product Development
 
-📱 Mobile App Development
+---
 
-⚡ Modern UI/UX Engineering
+# ✨ Features
 
-🚀 Startup & Product Development
+- 🎨 Premium Dark Theme
+- 🌌 Interactive Particle Network Background
+- 🧠 Dynamic Typing Role Animation
+- 🎯 Interactive Hero Typography
+- 📱 Fully Responsive Design
+- 📊 Technical Skills with Progress Indicators
+- 🏆 Certificates Showcase
+- 💼 Internship Section
+- 🛤️ Professional Journey Timeline
+- 📬 Contact Section
+- ⚡ Optimized Smooth Performance
 
-✨ Features
+---
 
-🎨 Premium Dark Gray + Cyan Design System
+# 🛠️ Tech Stack
 
-🌌 Interactive Network Particle Background
+## Frontend
 
-🖱️ Cursor-Based Hero Typography Animation
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
 
-💎 Glassmorphism UI Components
+## Tools & Platforms
 
-⚡ Smooth Scroll Reveal Animations
+- Vite
+- Git
+- GitHub
+- VS Code
 
-📊 Technical Skills with Progress Bars
+---
 
-🏆 Certificate Showcase with Image Preview
+# 📂 Portfolio Sections
 
-💼 Internship Showcase
+| Section | Description |
+|---------|-------------|
+| 🏠 Hero | Interactive introduction |
+| 🙋 About | Personal overview |
+| 🛤️ Journey | Education timeline |
+| 🏅 Achievements | Technical growth |
+| 💻 Projects | Self & Team Projects |
+| 🧰 Skills | Technical expertise |
+| 📜 Certificates | Certifications showcase |
+| 💼 Internship | Professional experience |
+| 📞 Contact | Get in touch |
 
-🛤️ Professional Journey Timeline
+---
 
-📱 Fully Responsive (Desktop, Tablet & Mobile)
+# 📸 Screenshots
 
-🚀 Performance Optimized Experience
+### 🏠 Hero Section
 
-🛠️ Tech Stack
+- Premium landing experience
+- Interactive typography
+- Modern dark UI
 
-Frontend
+### 🛤️ Journey
 
-React
+- Clean professional timeline
+- Smooth scroll animations
 
-TypeScript
+### 💻 Projects
 
-Tailwind CSS
+- Premium glass cards
+- Responsive layout
+- GitHub & Live Demo buttons
 
-Framer Motion
+### 🧰 Technical Skills
 
-Tools & Platforms
+- Percentage-based skill indicators
+- Clean modern cards
 
-Vite
+---
 
-Git & GitHub
+# 🚀 Getting Started
 
-VS Code
+## Clone Repository
 
-📂 Portfolio Sections
-
-Hero
-
-About
-
-Journey
-
-Achievements
-
-Projects
-
-Skills
-
-Certificates
-
-Internship
-
-Contact
-
-🎨 Design Highlights
-
-Inspired by premium portfolio experiences with a custom visual identity.
-
-Hero Experience
-
-Ultra-condensed hero typography
-
-Interactive letter hover animation
-
-Smooth cursor-based effects
-
-Minimal atmospheric background
-
-Glass UI
-
-Frosted navigation
-
-Premium dark cards
-
-Soft cyan accents
-
-Subtle borders and shadows
-
-Motion System
-
-Smooth scroll reveals
-
-Optimized Framer Motion animations
-
-Lightweight transitions
-
-Mobile-friendly performance
-
-📸 Screenshots
-🏠 Hero Section
-
-Interactive premium landing page with dynamic typography and atmospheric background.
-
-🛤️ Journey Timeline
-
-A clean vertical timeline highlighting educational and professional milestones.
-
-💻 Technical Skills
-
-Modern glass cards with percentage-based progress indicators.
-
-🏆 Certificates
-
-Professional certificate gallery with centered image preview.
-
-🚀 Getting Started
-Clone Repository
+```bash
 git clone https://github.com/selva2007-sk/selvakumar-portfolio.git
-Enter Project
+```
+
+## Navigate
+
+```bash
 cd selvakumar-portfolio
-Install Dependencies
+```
+
+## Install Dependencies
+
+```bash
 npm install
-Run Development Server
+```
+
+## Run Development Server
+
+```bash
 npm run dev
-Build Production Version
+```
+
+## Production Build
+
+```bash
 npm run build
-📁 Project Structure
+```
+
+---
+
+# 📁 Project Structure
+
+```text
 selvakumar-portfolio/
 ├── public/
 ├── src/
@@ -169,71 +160,98 @@ selvakumar-portfolio/
 │   ├── sections/
 │   ├── data/
 │   ├── assets/
-│   ├── hooks/
-│   ├── utils/
-│   └── styles/
+│   ├── styles/
+│   └── App.tsx
 ├── package.json
 ├── vite.config.ts
 └── README.md
-🎯 Purpose
+```
 
-This portfolio is built to:
+---
 
-Showcase Full Stack Development with AI skills
+# 🎯 Portfolio Goals
 
-Present real-world projects
+This portfolio is designed to:
 
-Highlight technical growth
+- Showcase technical skills
+- Present real-world projects
+- Highlight AI-integrated development
+- Demonstrate modern frontend engineering
+- Support internship opportunities
+- Build a strong professional brand
 
-Demonstrate modern frontend engineering
+---
 
-Support internship, collaboration, and career opportunities
+# 📈 Future Improvements
 
-🔮 Future Roadmap
+- 🌍 Custom Domain
+- 📊 GitHub Activity Integration
+- 📝 Blog Section
+- 🌐 Multi-language Support
+- 🤖 AI Portfolio Assistant
+- 📱 Progressive Web App (PWA)
+- 🎥 Interactive Project Demos
 
-🌍 Custom Domain
+---
 
-📈 GitHub Activity Integration
+# 📬 Contact
 
-📝 Technical Blog
+## 📧 Email
 
-🌐 Multi-language Support
+**selva2105sk@gmail.com**
 
-🤖 AI Portfolio Assistant
+## 🔗 LinkedIn
 
-📱 Progressive Web App (PWA)
+https://www.linkedin.com/
 
-🎥 Project Case Study Pages
+## 💻 GitHub
 
-📬 Contact
-Email
+https://github.com/selva2007-sk
 
-selva2105sk@gmail.com
+---
 
-LinkedIn
+# ⚠️ Source Code Usage
 
-Update with your public LinkedIn profile link.
+This repository is published for **portfolio demonstration and code viewing purposes only**.
 
-GitHub
+## You May
 
-selva2007-sk
+- ✅ View the source code
+- ✅ Explore the project structure
+- ✅ Learn from the implementation
 
-⚠️ Source Code Usage
+## You May Not
 
-This repository is published for portfolio viewing purposes only.
+- ❌ Copy the source code
+- ❌ Reuse the design
+- ❌ Redistribute the project
+- ❌ Use it for academic submissions
+- ❌ Use it in commercial projects
 
-The source code is not permitted to be copied, reused, redistributed, modified, or used in personal, academic, or commercial projects without prior written permission from Selvakumar S.
+without prior written permission from **Selvakumar S**.
 
-📄 License
+---
 
-All Rights Reserved © 2026 Selvakumar S
+# 📄 License
 
-This project is intended for personal portfolio and demonstration purposes only.
+## All Rights Reserved © 2026 Selvakumar S
 
-⭐ Support
+This project is intended solely for personal portfolio demonstration.
 
-If you appreciate the design and concept of this portfolio, consider giving the repository a Star ⭐.
+No permission is granted to reproduce, modify, distribute, or commercially use any part of this repository without explicit written authorization.
 
-💙 Built with Passion by Selvakumar S
+---
 
-Full Stack Developer with AI • Software Engineer • Startup Builder
+# ⭐ Support
+
+If you appreciate the design and portfolio concept, feel free to **Star ⭐ the repository**.
+
+---
+
+<p align="center">
+
+## 💙 Built with Passion by Selvakumar S
+
+**Full Stack Developer with AI • Software Engineer • Startup Builder**
+
+</p>
